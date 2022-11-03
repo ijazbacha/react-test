@@ -1,4 +1,5 @@
 import React from "react";
+import './Button.css'
 
 function Button({ children, onClick, type, buttonStyle, buttonSize }) {
   const STYLE = [
@@ -12,8 +13,14 @@ function Button({ children, onClick, type, buttonStyle, buttonSize }) {
     "btn--success--outline",
   ];
 
+  const SIZE = ["btn--medium", "btn--large"];
+
+  const setBtnStyle = STYLE.includes(buttonStyle) ? buttonStyle : STYLE[0];
+
+  const setBtnSize = SIZE.includes(buttonSize) ? buttonSize : SIZE[0];
+
   return (
-    <button onClick={onClick} type={type}>
+    <button className={`btn ${setBtnStyle} ${setBtnSize}`} onClick={onClick} type={type}>
       {children}
     </button>
   );

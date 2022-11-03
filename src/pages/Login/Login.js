@@ -1,19 +1,26 @@
-import React from 'react'
-import Button from '../../components/customButton/Button'
-import './Login.css'
+import React from "react";
+import Button from "../../components/customButton/Button";
+import "./Login.css";
 
 function Login() {
-  const loginHandler = () =>{
-    alert(" login button clicked")
-  }
+  const loginHandler = () => {
+    alert(" login button clicked");
+  };
   return (
-    <div className='container'>
-      <div className='loginContainer'>
-        <h1 className='loginText'>Login to Your Account</h1>
-        <Button onClick={loginHandler}>Login</Button>
+    <div className="container">
+      <div className="loginContainer">
+        <h1 className="loginText">Login to Your Account</h1>
+        <Button
+          onClick={loginHandler}
+          buttonStyle="btn--primary--solid"
+          buttonSize="btn--large"
+          type={"button"}
+        >
+          Login
+        </Button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
