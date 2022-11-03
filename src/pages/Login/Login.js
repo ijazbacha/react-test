@@ -25,7 +25,8 @@ function Login(props) {
   let navigate = useNavigate();
 
   const loginHandler = (values) => {
-    Cookies.remove("login");
+    if(values.email == 'ijaz@gmail.com' && values.password == '12345678'){
+      Cookies.remove("login");
     Cookies.set("login", values, {
       expires: 7,
       secure: true,
@@ -33,6 +34,10 @@ function Login(props) {
       sameSite: "Strict",
     });
     navigate("/");
+    }else{
+      alert('Login Failed: Please check your email and password!')
+    }
+    
   };
 
   const renderField = ({ input, label, type, meta: { touched, error } }) => (
