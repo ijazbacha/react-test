@@ -1,0 +1,61 @@
+.modalInnerContainer{
+    width: 100%;
+    height: auto;
+    font-family: 'Roboto';
+}
+
+.modalHeaderText{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+    align-items: center;
+    font-family: 'Roboto';
+}
+
+.modalHeaderText h1{
+    font-family: 'Roboto';
+}
+
+.modalHeaderText h2{
+    cursor: pointer;
+    color: gray;
+    font-family: 'Roboto';
+}
+
+.modalOrderContainer{
+    width: 100%;
+    /* display: flex; */
+}
+
+.modalOrderContainer p {
+    font-weight: 700;
+    font-family: 'Roboto';
+}
+
+.modalOrderContainer span {
+    margin-left: 10px;
+    font-family: 'Roboto';
+}
+
+.modalOrderInnerContainer{
+    display: flex;
+    align-items: center;
+    margin-top: -10px;
+}
+
+.modalBtn{
+    width: 100%;
+    height: 40px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    background-color: #4628ff;
+    outline: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.modalBtn:hover{
+    background-color: #533fd8;
+}
