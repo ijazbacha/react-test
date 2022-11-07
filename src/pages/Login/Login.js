@@ -14,8 +14,8 @@ const validate = (values) => {
   }
   if (!values.password) {
     errors.password = "Required";
-  } else if (values.password.length < 8) {
-    errors.password = "Password Must be an eight characters!";
+  } else if (values.password.length < 6) {
+    errors.password = "Password Must be 6 characters or greater!";
   }
   return errors;
 };
@@ -24,20 +24,39 @@ function Login(props) {
   let { handleSubmit } = props;
   let navigate = useNavigate();
 
-  const loginHandler = (values) => {
-    if(values.email == 'ijaz@gmail.com' && values.password == '12345678'){
-      Cookies.remove("login");
-    Cookies.set("login", values, {
-      expires: 7,
-      secure: true,
-      path: "/",
-      sameSite: "Strict",
-    });
-    navigate("/");
-    }else{
-      alert('Login Failed: Please check your email and password!')
+  const loginHandler = async (values) => {
+    try {
+      const Response = await fetch(
+        "https://zeedispatch.com/simply/public/api/login?web=true",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: values.email,
+            password: values.password,
+          }),
+        }
+      );
+      const user = await Response.json();
+      if (user.token) {
+        let token = user.token;
+        Cookies.remove("login");
+        Cookies.set("login", token, {
+          expires: 7,
+          secure: true,
+          path: "/",
+          sameSite: "Strict",
+        });
+        navigate("/");
+      } else {
+        alert("Login Failed: Please check your email and password!");
+      }
+    } catch (error) {
+      alert("Error: ", error.message);
     }
-    
   };
 
   const renderField = ({ input, label, type, meta: { touched, error } }) => (
